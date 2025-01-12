@@ -19,7 +19,6 @@ from langchain_community.vectorstores import FAISS
 from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
 from langchain_google_genai import ChatGoogleGenerativeAI
-from flask_cors import cross_origin
 
 app = Flask(__name__)
 CORS(app, resources={
