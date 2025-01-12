@@ -1,0 +1,12 @@
+langchain
+langchain-openai
+openai
+chromadb
+requests
+pinecone-client
+python-dotenv
+faiss-cpu
+langchain-community
+langchain-google-genai
+flask==2.0.1
+flask-cors==3.0.10
