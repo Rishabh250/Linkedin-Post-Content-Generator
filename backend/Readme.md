@@ -139,10 +139,6 @@ ENVIRONMENT=production
 OPENAI_API_KEY=your_openai_key
 GOOGLE_API_KEY=your_google_key
 
-# Rate Limiting
-MAX_REQUESTS_PER_MINUTE=60
-MAX_TOKENS_PER_REQUEST=2000
-
 # Security
 CORS_ORIGINS=http://localhost:3000,https://yourdomain.com
 API_KEY_REQUIRED=True
@@ -168,19 +164,6 @@ API_KEY_REQUIRED=True
    - Implement retry mechanisms
    - Handle timeout scenarios
 
-## 📈 Performance Optimization
-
-1. **Caching Strategy**
-   - Response caching
-   - Model response caching
-   - Cache invalidation rules
-   - Distributed caching support
-
-2. **Request Processing**
-   - Async request handling
-   - Request batching
-   - Connection pooling
-   - Task queuing
 
 ## 🤝 Contributing
 
