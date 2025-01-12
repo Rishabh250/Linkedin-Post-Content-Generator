@@ -20,7 +20,7 @@ This is the backend service for the LinkedIn Post Generator application - an AI-
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Rishabh250/Linkedin-Post-Content-Generator.git
    cd backend
    ```
 
@@ -39,3 +39,12 @@ This is the backend service for the LinkedIn Post Generator application - an AI-
 ## Running the Backend
 
 Start the Flask server:
+```bash
+python app.py
+```
+
+The server will run on `http://localhost:5000`.
+
+## API Endpoints
+
+- `POST /generate-post`: Generate a LinkedIn post content
