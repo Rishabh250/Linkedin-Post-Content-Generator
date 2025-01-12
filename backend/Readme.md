@@ -48,3 +48,9 @@ The server will run on `http://localhost:5000`.
 ## API Endpoints
 
 - `POST /generate-post`: Generate a LinkedIn post content
+
+### Json Body
+
+- `content`: The content of the post
+- `tone`: The tone of the post
+- `target_audience`: The target audience of the post
