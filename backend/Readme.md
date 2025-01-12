@@ -96,10 +96,6 @@ Generate optimized LinkedIn post content based on provided parameters.
   "topic": "string",
   "tone": "string",
   "target_audience": "string",
-  "include_hashtags": boolean,
-  "max_length": integer,
-  "preferred_model": "string",
-  "custom_instructions": "string"
 }
 ```
 
