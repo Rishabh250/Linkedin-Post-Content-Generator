@@ -14,9 +14,8 @@ from dotenv import load_dotenv
 from langchain.agents import AgentType, Tool, initialize_agent
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
 from langchain_google_genai import ChatGoogleGenerativeAI
 
@@ -40,8 +39,8 @@ def setup_logging() -> None:
 def load_environment() -> None:
     """Load and validate environment variables"""
     load_dotenv()
-    if not os.getenv("OPENAI_API_KEY"):
-        raise EnvironmentError("Please set OPENAI_API_KEY in your environment variables")
+    if not os.getenv("GOOGLE_API_KEY"):
+        raise EnvironmentError("Please set GOOGLE_API_KEY in your environment variables")
     
 class ReformatTool:
     """Tool for reformatting text"""
@@ -90,7 +89,7 @@ class WebSearchTool:
 
 class VectorDB:
     """Vector database management"""
-    def __init__(self, embeddings: OpenAIEmbeddings):
+    def __init__(self, embeddings: HuggingFaceEmbeddings):
         self.embeddings = embeddings
         self.db = None
 
@@ -121,7 +120,7 @@ class VectorDB:
 
 class PostGenerator:
     """Core post generation functionality"""
-    def __init__(self, llm: ChatOpenAI, vector_db: VectorDB):
+    def __init__(self, llm: ChatGoogleGenerativeAI, vector_db: VectorDB):
         self.llm = llm
         self.vector_db = vector_db
         self.prompt = self._create_prompt_template()
@@ -208,8 +207,8 @@ class PostGenerator:
 class LinkedInPostGenerator:
     """Main application class"""
     def __init__(self):
-        self.embeddings = OpenAIEmbeddings()
-        self.llm = ChatOpenAI(temperature=0.7, model="gpt-4o")
+        self.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        self.llm = ChatGoogleGenerativeAI(temperature=0.7, model="gemini-1.5-flash-002", google_api_key=os.getenv("GOOGLE_API_KEY"))
         self.memory = ConversationBufferMemory(memory_key="chat_history")
         self.vector_db = VectorDB(self.embeddings)
         self.vector_db.initialize()
